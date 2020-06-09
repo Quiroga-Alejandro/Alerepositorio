@@ -1,0 +1,101 @@
+Proceso cajafuerte_v3
+	
+	
+	
+	definir movimiento Como real;
+	dimension movimiento[2];
+	//movimiento[0] =  deposito
+	//movimiento[1] = extraccion
+	
+	definir contrasena como entero;
+	definir opcion como entero;
+	Definir dinero Como real;
+	dinero <- 0;
+	definir salir como entero;
+	salir <- 9;
+	
+	
+	Limpiar Pantalla;
+	escribir"                 Caja fuerte virtual";
+	escribir"";
+	escribir"por favor ingrese la clave de seguridad";
+	
+	
+	leer contrasena;
+	
+	Repetir
+		
+		
+		
+		si contrasena = 1234 entonces
+			
+			Limpiar Pantalla;
+			escribir"Bienvenido";
+			escribir"";
+			escribir"1 <- depositar";
+			escribir"2 <- extraer";
+			escribir"3 <- consultar saldo";
+			leer opcion;
+			
+			Segun opcion Hacer
+				1:
+					Limpiar Pantalla;
+					escribir"ingrese la cantidad a depositar";
+					leer movimiento[0];
+					dinero <- dinero + movimiento[0];
+					escribir"se han depositado $", movimiento[0];
+					
+				2:
+					Limpiar Pantalla;
+					escribir"engrese la cantidad a retirar";
+					leer movimiento[1];
+					dinero <- dinero - movimiento[1];
+					
+					
+					mientras dinero <= 0 Hacer
+						
+						Escribir "no posee dinero para retirar";
+						
+						esperar tecla;
+						
+					FinMientras
+					
+					
+					escribir"se han extraido $ ", movimiento[1];
+					
+				3:
+					Limpiar pantalla;
+					
+					si dinero = 0 Entonces
+						
+						escribir "no posee dinero en la caja";
+						
+					FinSi
+					
+					escribir"su saldo es $ ",dinero;
+					
+				De Otro Modo:
+					
+					escribir"opcion no valida";
+					
+			FinSegun
+			
+			
+		SiNo
+			
+			escribir"La clave es incorrecta";
+			escribir"";
+			escribir"Presione 9 para salir";
+			esperar tecla;
+			
+		FinSi
+		
+		escribir"";
+		escribir"9 para salir";
+		escribir"enter para volver al menu";
+		leer salir;
+		
+		
+	Hasta Que salir = 9;
+	
+FinProceso
